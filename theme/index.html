@@ -225,39 +225,53 @@
 				<div class="appoinment-wrap mt-5 mt-lg-0">
 					<h2 class="mb-2 title-color">Book a Demo</h2>
 					<p class="mb-4">See how AI notetaking can benefit your practice.</p>
-					     <form id="#" class="appoinment-form" method="post" action="#">
-                    <div class="row">
-
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="date" id="date" type="text" class="form-control" placeholder="dd/mm/yyyy">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="time" id="time" type="text" class="form-control" placeholder="Time">
-                            </div>
-                        </div>
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="name" id="name" type="text" class="form-control" placeholder="Full Name">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="phone" id="phone" type="Number" class="form-control" placeholder="Phone Number">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-2 mb-4">
-                        <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
-                    </div>
-
-                    <a class="btn btn-main btn-round-full" href="appoinment.html" >Book a Demo<i class="icofont-simple-right ml-2  "></i></a>
-                </form>
-            </div>
+					<form id="submit-to-google-sheet">
+						<div class="row">
+	
+							 <div class="col-lg-6">
+								<div class="form-group">
+									<input name="Date" id="date" type="text" class="form-control" placeholder="dd/mm/yyyy" data-sb-validations="required" required/>
+								</div>
+							</div>
+	
+							<div class="col-lg-6">
+								<div class="form-group">
+									<input name="Name" id="name" type="text" class="form-control" placeholder="Full Name">
+								</div>
+							</div>
+	
+							<div class="col-lg-6">
+								<div class="form-group">
+									<input name="Email" id="email" type="text" class="form-control" placeholder="Email" data-sb-validations="required,email" required/>
+								</div>
+							</div>
+						
+	
+							<div class="col-lg-6">
+								<div class="form-group">
+									<input name="Phone" id="phone" type="Number" class="form-control" placeholder="Phone Number" data-sb-validations="required" required/>
+								</div>
+							</div>
+						</div>
+						<div class="form-group-2 mb-4">
+							<textarea name="Message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
+						</div>
+	
+						<script>
+							const scriptURL = 'https://script.google.com/macros/s/AKfycbw453BBK8erOdbuY9MIqaUP8Gsa7DHkAhZ9Nr9lZb2v7izAds7vxQ7muuC2atiVaDbq/exec'
+							const form = document.forms['submit-to-google-sheet']
+						  
+							form.addEventListener('submit', e => {
+							  e.preventDefault()
+							  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+								.then(response => console.log('Success!', response))
+								.catch(error => console.error('Error!', error.message))
+							})
+						  </script>
+	
+						<button type="submit" class="btn btn-main btn-round-full">Book Demo<i class="icofont-simple-rightml-2"></i></button>
+					</form>
+            	</div>
 			</div>
 		</div>
 	</div>
